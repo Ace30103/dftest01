@@ -12,5 +12,5 @@ class MyHandler(BaseHTTPRequestHandler):
             self.wfile.write('{"out":0}'.encode())
          #the data that DF gets
 
-server = HTTPServer(('localhost',8080),MyHandler)
+server = HTTPServer(('0.0.0.0',8080),MyHandler)
 server.serve_forever()
