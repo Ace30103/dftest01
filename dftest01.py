@@ -6,11 +6,12 @@ class MyHandler(BaseHTTPRequestHandler):
         self.send_response(200) #200, OK
         self.send_header('content-type','application/json') #return type is a json / dictionary
         self.end_headers()
-        if self.path == "/Type1":
-            self.wfile.write('{"out":1}'.encode())
-        else:
-            self.wfile.write('{"out":0}'.encode())
+        self.wfile.write('{"out":0}'.encode())
          #the data that DF gets
+    def do_POST(self):
+        content_len = int(self.headers.get('Content-Length'))
+        post_body = self.rfile.read(content_len)
+        print("{post_body}")
 
 server = HTTPServer(('0.0.0.0',8080),MyHandler)
 server.serve_forever()
