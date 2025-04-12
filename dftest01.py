@@ -7,5 +7,5 @@ class MyHandler(BaseHTTPRequestHandler):
         post_body = self.rfile.read(content_len)
         print(post_body)
 
-server = HTTPServer(('localhost',8080),MyHandler)
+server = HTTPServer(('0.0.0.0',8080),MyHandler)
 server.serve_forever()
